@@ -29,7 +29,7 @@
             $weight = $_POST['weight'];
             $requests = $_POST['requests'];
             
-            $update = "UPDATE OrderItem SET orderDate='$order_date', package='$item', count='$count', request_weight='$weight', requests='$requests' WHERE id = $userId";
+            $update = "UPDATE Orderitem SET order_date='$order_date', item='$item', count='$count', weight='$weight', requests='$requests' WHERE user_id = $userId";
 
 
             mysqli_query($conn,$update);

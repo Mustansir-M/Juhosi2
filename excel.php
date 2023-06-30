@@ -12,11 +12,10 @@ $conn = mysqli_connect($servername, $username, $password, $database);
 $idd = $_SESSION['idd'];
 $password = $_SESSION['password'];  
 
-
-$query = "SELECT User.*, OrderItem.* FROM User
-        JOIN OrderItem ON User.id = OrderItem.id
+$query = "SELECT User.*, Orderitem.* FROM User
+        JOIN Orderitem ON User.id = Orderitem.user_id
         WHERE User.id = '$idd' AND User.password = '$password'";
-    $result = mysqli_query($conn, $query);
+        $result = mysqli_query($conn, $query);
     
     $data="
     <table border='1'>
@@ -44,12 +43,12 @@ $query = "SELECT User.*, OrderItem.* FROM User
         {
            $data.="
                 <tr>
-                    <td>$row[orderDate]</td>
+                    <td>$row[order_date]</td>
                     <td>$row[id]</td>
                     <td>$row[name]</td>
-                    <td>$row[package]</td>
+                    <td>$row[item]</td>
                     <td>$row[count]</td>
-                    <td>$row[request_weight]</td>
+                    <td>$row[weight]</td>
                     <td>$row[requests]</td>
                 </tr>
             ";

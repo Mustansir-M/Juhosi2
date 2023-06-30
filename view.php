@@ -12,11 +12,10 @@ session_start();
         $idd = $_SESSION['idd'];
         $password = $_SESSION['password'];  
 
-
-        $query = "SELECT User.*, OrderItem.* FROM User
-                JOIN OrderItem ON User.id = OrderItem.id
-                WHERE User.id = '$idd' AND User.password = '$password'";
-            $result = mysqli_query($conn, $query);
+        $query = "SELECT User.*, Orderitem.* FROM User
+        JOIN Orderitem ON User.id = Orderitem.user_id
+        WHERE User.id = '$idd' AND User.password = '$password'";
+        $result = mysqli_query($conn, $query);
     
     echo"
     <h1>HQ's page: \"Order List\"</h1>
@@ -45,12 +44,12 @@ session_start();
         {
            echo"
                 <tr>
-                    <td>$row[orderDate]</td>
+                    <td>$row[order_date]</td>
                     <td>$row[id]</td>
                     <td>$row[name]</td>
-                    <td>$row[package]</td>
+                    <td>$row[item]</td>
                     <td>$row[count]</td>
-                    <td>$row[request_weight]</td>
+                    <td>$row[weight]</td>
                     <td>$row[requests]</td>
                     <td></td>
                     <td></td>
